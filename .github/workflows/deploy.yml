@@ -26,7 +26,7 @@ jobs:
         run: npm run build # Replace with your actual build command
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::160071257600:role/github-actions-oidc-role # github-actions-oidc-role
           aws-region: eu-central-1 # Change to your AWS region
