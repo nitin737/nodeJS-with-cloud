@@ -34,4 +34,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: 160071257600:latest 160071257600.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
+          tags: 160071257600.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
