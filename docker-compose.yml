@@ -1,0 +1,21 @@
+version: "3"
+services:
+  app:
+    image: node:16
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: bash -c "npm install && npm run start"
+    ports:
+      - 3000:3000
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:3000/diagnostics/heartbeat || exit 1",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5

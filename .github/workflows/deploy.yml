@@ -17,28 +17,23 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16 # Change to your desired Node.js version
+          node-version: 16
 
       - name: Install dependencies
         run: npm install
 
       - name: Build application
-        run: npm run build # Replace with your actual build command
+        run: npm run build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1 # Change to your AWS region
+          aws-region: eu-central-1
 
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v20
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: your-application-name
-          environment_name: your-environment-name
-          version_label: ${{ github.sha }}
-          region: eu-central-1 # Change to your AWS region
-          deployment_package: ./dist/app.zip # Path to your build artifact
+          push: true
+          tags: nitin737:latest 160071257600.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
