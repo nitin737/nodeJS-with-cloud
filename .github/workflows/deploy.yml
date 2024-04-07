@@ -42,10 +42,18 @@ jobs:
           push: true
           tags: ${{vars.AWS_ACCOUNT_ID}}.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
 
-      # Deploy the pushed image to ECS cluster
-      - name: Deploy to ECS cluster
-        uses: aws-actions/ecs-deploy@v1
+      - name: Fill in the new task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          cluster: nodeJS-cloud-space
+          task-definition: deploy/config/task-definition.json
+          container-name: web
+          image: ${{ vars.AWS_ACCOUNT_ID }}.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: node-js-service
-          image: ${{vars.AWS_ACCOUNT_ID}}.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
+          cluster: nodeJS-cloud-space
+          wait-for-service-stability: true
