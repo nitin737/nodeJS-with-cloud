@@ -41,4 +41,4 @@ jobs:
           environment_name: your-environment-name
           version_label: ${{ github.sha }}
           region: eu-central-1 # Change to your AWS region
-          deployment_package: ./build/your-deployment-package.zip # Path to your build artifact
+          deployment_package: ./dist/app.zip # Path to your build artifact
