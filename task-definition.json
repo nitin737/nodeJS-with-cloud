@@ -6,8 +6,8 @@
   "executionRoleArn": "arn:aws:iam::${{vars.AWS_ACCOUNT_ID}}:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
-      "name": "my-container",
-      "image": "${{vars.AWS_ACCOUNT_ID}}.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest",
+      "name": "web",
+      "image": "160071257600.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest",
       "portMappings": [
         {
           "containerPort": 80,
