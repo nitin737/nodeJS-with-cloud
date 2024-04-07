@@ -48,7 +48,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: /deploy/config/task-definition.json
+          task-definition: task-definition.json
           container-name: web
           image: 160071257600.dkr.ecr.eu-central-1.amazonaws.com/nitin737:latest
 
