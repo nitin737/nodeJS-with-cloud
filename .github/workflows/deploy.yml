@@ -6,6 +6,7 @@ on:
 
 env:
   ENVIRONMENT: stage
+  AWS_ACCOUNT_ID: ${{env.AWS_ACCOUNT_ID}}
   AWS_REGION: eu-central-1
 
 jobs:
@@ -26,8 +27,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{env.AWS_ACCOUNT_ID}}:role/github-actions-oidc-role # github-actions-oidc-role
-          aws-region: "$AWS_REGION"
+          role-to-assume: arn:aws:iam::$AWS_ACCOUNT_ID:role/github-actions-oidc-role # github-actions-oidc-role
+          aws-region: eu-central-1
           audience: sts.amazonaws.com
           role-session-name: GitHubActions
 
