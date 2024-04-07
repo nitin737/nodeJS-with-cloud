@@ -3,7 +3,7 @@
   "cpu": "256",
   "memory": "512",
   "requiresCompatibilities": ["FARGATE"],
-  "executionRoleArn": "arn:aws:iam::${{vars.AWS_ACCOUNT_ID}}:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::160071257600:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "name": "web",
